@@ -65,3 +65,25 @@ export const createDirectoryAtom = atom(
         })
     }
 )
+ 
+export const deleteNodeAtom = atom(
+    null,
+    async (get, set)=>{
+        const wc = await getWebContainer()
+        const node = get(selectedNodeAtom)
+
+        if(!node) return
+        if(node.path==="/") return
+
+        if(node.type === "file"){
+            await wc.fs.rm(node.path)
+        }else{
+            await wc.fs.rm(node.path, {recursive: true})
+        }
+
+        const tree = await buildTree(wc.fs)
+        set(treeAtom, tree)
+
+        set(selectedNodeAtom, null)
+    }
+)

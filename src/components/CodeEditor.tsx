@@ -5,18 +5,31 @@ import {  FileTree } from "./ui/FileTree";
 import Editor from "@monaco-editor/react"
 import { defineTheme } from "../libs/customeTheme";
 import { useAtom } from "jotai";
-import { refreshTreeAtom, selectedNodeAtom, treeAtom } from "../libs/atomst";
+import { deleteNodeAtom, refreshTreeAtom, selectedNodeAtom, treeAtom } from "../libs/atomst";
+import type { FileNode } from "../types";
 
 export const CodeEditor = () => {
   const [treeData] = useAtom(treeAtom)
   const [_, refreshTree] = useAtom(refreshTreeAtom)
   const [selectedFile, setSelectedFile] = useState<string | null>(null)
   const [fileContent, setFileContent] = useState("")
-  const [selectedNode, setSelectedNode] = useAtom(selectedNodeAtom)
+  const [selectedNode, setSelectedNode] = useAtom<FileNode |null>(selectedNodeAtom)
+  const [, deleteNode] = useAtom(deleteNodeAtom)
 
   useEffect(() => {
     refreshTree()
   }, [])
+
+  useEffect(()=>{
+    const onKey = (e: KeyboardEvent)=>{
+        if(e.key === "Delete"){
+            deleteNode()
+        }
+    }
+
+    window.addEventListener("keydown", onKey)
+    return ()=> window.removeEventListener("keydown", onKey)
+  },[])
 
   useEffect(() => {
     async function loadFile() {
@@ -27,6 +40,14 @@ export const CodeEditor = () => {
     }
     loadFile()
   }, [selectedFile])
+
+  useEffect(()=> {
+    if(selectedNode?.type === "file"){
+        setSelectedFile(selectedNode.path)
+    }else{
+        setSelectedFile(null)
+    }
+  },[selectedNode])
 
   useEffect(() => {
     if (!selectedFile) return;
