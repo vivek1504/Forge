@@ -83,7 +83,6 @@ export function FrameworkSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-zinc-900/30 to-zinc-950" />
 
       <div className="relative z-10 max-w-5xl mx-auto">
-        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -100,7 +99,6 @@ export function FrameworkSection() {
           </p>
         </motion.div>
 
-        {/* Framework grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -120,7 +118,6 @@ export function FrameworkSection() {
               }}
               className={`group relative p-6 rounded-xl bg-zinc-900/50 border border-zinc-800 hover:border-zinc-700 transition-all duration-300 hover:-translate-y-1 shadow-lg ${framework.glow}`}
             >
-              {/* Coming soon badge */}
               {framework.comingSoon && (
                 <span className="absolute top-3 right-3 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider bg-zinc-800 text-zinc-500 rounded">
                   Soon

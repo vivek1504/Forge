@@ -35,17 +35,14 @@ export const IDEpage = () => {
 
       <div className="flex-1 overflow-hidden relative">
         <div className="grid grid-cols-5 h-full">
-          {/* LEFT PANEL */}
           <div className="col-span-3 flex h-full overflow-hidden border-r border-border">
             <Sidebar />
 
             <div className="flex-1 flex flex-col h-full overflow-hidden">
-              {/* EDITOR */}
               <div className="flex-1 overflow-hidden p-1">
                 <CodeEditor />
               </div>
 
-              {/* TERMINAL (STICKY BOTTOM) */}
               <div className="h-50 shrink-0">
                 <Terminal
                   ref={terminalRef}
@@ -57,7 +54,6 @@ export const IDEpage = () => {
             </div>
           </div>
 
-          {/* RIGHT PANEL */}
           <div className="col-span-2 h-full overflow-hidden bg-background border-l border-zinc-900">
             <PreviewFrame ref={iframeRef} />
           </div>

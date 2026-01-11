@@ -111,11 +111,10 @@ async function readAllFiles(
       if (entry.isFile()) {
         const content = await webContainer.fs.readFile(fullPath, "utf-8");
         result.push({
-          path: fullPath.replace(/^\//, ""), // remove leading slash for zip
+          path: fullPath.replace(/^\//, ""),
           content,
         });
       } else if (entry.isDirectory()) {
-        // optional: skip node_modules
         if (entry.name === "node_modules") continue;
 
         await walk(fullPath);

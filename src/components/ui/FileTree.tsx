@@ -39,7 +39,7 @@ export async function buildTree(
   return nodes;
 }
 
-export function FileTree({ data, onNodeSelect, selectedPath }: Props) {
+export function FileTree({ data, onNodeSelect }: Props) {
   return (
     <Tree
       data={data}

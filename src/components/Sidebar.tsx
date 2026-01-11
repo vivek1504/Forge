@@ -1,29 +1,15 @@
 import { useState } from "react";
-import {
-  Files,
-  FilePlus,
-  FolderPlus,
-  FileCode,
-  Folder,
-  Trash2,
-  AlertTriangle,
-} from "lucide-react";
+import { Files, FilePlus, FolderPlus, FileCode, Folder } from "lucide-react";
 import { useAtom } from "jotai";
-import {
-  createDirectoryAtom,
-  createFileAtom,
-  selectedNodeAtom,
-} from "../lib/atoms";
+import { createDirectoryAtom, createFileAtom } from "../lib/atoms";
 
 type CreationMode = "file" | "folder" | null;
 
 export const Sidebar = () => {
   const [creationMode, setCreationMode] = useState<CreationMode>(null);
-  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [name, setName] = useState("");
   const [, createFile] = useAtom(createFileAtom);
   const [, createDirectory] = useAtom(createDirectoryAtom);
-  const [selectedNode] = useAtom(selectedNodeAtom);
 
   return (
     <>
@@ -37,7 +23,6 @@ export const Sidebar = () => {
 
         <div className="w-8 h-px bg-border" />
 
-        {/* New File Button */}
         <div className="relative">
           <div
             className={`p-2 rounded-md cursor-pointer transition-colors relative group ${
@@ -55,7 +40,6 @@ export const Sidebar = () => {
             </span>
           </div>
 
-          {/* Inline Popover for File */}
           {creationMode === "file" && (
             <div className="absolute left-14 top-1/2 -translate-y-1/2 bg-secondary border border-border rounded-lg shadow-lg p-3 z-50 w-60 animate-in fade-in slide-in-from-left-2 duration-150">
               <div className="text-xs text-muted-foreground mb-2 font-medium">
@@ -86,7 +70,6 @@ export const Sidebar = () => {
           )}
         </div>
 
-        {/* New Folder Button */}
         <div className="relative">
           <div
             className={`p-2 rounded-md cursor-pointer transition-colors relative group ${
@@ -104,7 +87,6 @@ export const Sidebar = () => {
             </span>
           </div>
 
-          {/* Inline Popover for Folder */}
           {creationMode === "folder" && (
             <div className="absolute left-14 top-1/2 -translate-y-1/2 bg-secondary border border-border rounded-lg shadow-lg p-3 z-50 w-60 animate-in fade-in slide-in-from-left-2 duration-150">
               <div className="text-xs text-muted-foreground mb-2 font-medium">

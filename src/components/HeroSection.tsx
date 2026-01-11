@@ -17,14 +17,12 @@ const codeLines = [
 export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-zinc-900/50 to-zinc-950" />
 
       {/* Subtle glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-blue-500/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[300px] bg-emerald-500/5 rounded-full blur-3xl" />
 
-      {/* Animated code background */}
       <div className="absolute inset-0 flex items-center justify-center opacity-[0.07] select-none pointer-events-none overflow-hidden">
         <motion.div
           className="font-mono text-sm md:text-base leading-relaxed text-left max-w-2xl"
@@ -46,9 +44,7 @@ export function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Main content */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        {/* Terminal badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -60,7 +56,6 @@ export function HeroSection() {
           <span className="terminal-cursor">_</span>
         </motion.div>
 
-        {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -74,7 +69,6 @@ export function HeroSection() {
           </span>
         </motion.h1>
 
-        {/* Subheading */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -84,7 +78,6 @@ export function HeroSection() {
           Write, run, and preview full projects instantly — no setup required.
         </motion.p>
 
-        {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -93,9 +86,9 @@ export function HeroSection() {
         >
           <button
             onClick={() => {
-              document.getElementById('framework-section')?.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+              document.getElementById("framework-section")?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
               });
             }}
             className="group flex items-center gap-2 px-8 py-4 bg-white text-zinc-900 font-semibold rounded-lg hover:bg-zinc-100 transition-all duration-200 shadow-lg shadow-white/10"
@@ -114,7 +107,6 @@ export function HeroSection() {
           </a>
         </motion.div>
 
-        {/* Floating IDE mock */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -122,7 +114,6 @@ export function HeroSection() {
           className="mt-16 relative"
         >
           <div className="relative mx-auto max-w-3xl rounded-xl overflow-hidden border border-zinc-800 bg-zinc-900/80 backdrop-blur shadow-2xl shadow-black/50">
-            {/* Window chrome */}
             <div className="flex items-center gap-2 px-4 py-3 bg-zinc-800/60 border-b border-zinc-700/50">
               <div className="flex gap-1.5">
                 <div className="w-3 h-3 rounded-full bg-red-500/80" />
@@ -134,16 +125,13 @@ export function HeroSection() {
               </span>
             </div>
 
-            {/* Editor mock */}
             <div className="p-4 font-mono text-sm text-left">
               <div className="flex gap-4">
-                {/* Line numbers */}
                 <div className="text-zinc-600 select-none">
                   {codeLines.slice(0, 6).map((_, i) => (
                     <div key={i}>{i + 1}</div>
                   ))}
                 </div>
-                {/* Code */}
                 <div className="flex-1">
                   <motion.div
                     initial={{ opacity: 0 }}
@@ -223,7 +211,6 @@ export function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
