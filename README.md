@@ -7,18 +7,18 @@ A real in-browser IDE powered by WebContainers. Code, build, and run projects di
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript)
 ![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite)
 
-## ✨ Features
+## Features
 
-- **🚀 Instant Start** - Pick a framework and start coding immediately. No configuration needed.
-- **📦 Multiple Frameworks** - Support for React, Vue, Svelte, and Node.js projects
-- **💻 Monaco Editor** - VS Code-like editing experience with syntax highlighting
-- **🖥️ Integrated Terminal** - Full terminal with xterm.js integration
-- **👁️ Live Preview** - See your changes in real-time with HMR support
-- **📁 File Explorer** - Navigate and manage project files with ease
-- **⬇️ Download Projects** - Export your project as a zip file
-- **🌐 Runs Entirely in Browser** - Powered by WebContainers, no server required
+- **Instant Start** - Pick a framework and start coding immediately. No configuration needed.
+- **Multiple Frameworks** - Support for React, Vue, Svelte, and Node.js projects
+- **Monaco Editor** - VS Code-like editing experience with syntax highlighting
+- **Integrated Terminal** - Full terminal with xterm.js integration
+- **Live Preview** - See your changes in real-time with HMR support
+- **File Explorer** - Navigate and manage project files with ease
+- **Download Projects** - Export your project as a zip file
+- **Runs Entirely in Browser** - Powered by WebContainers, no server required
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Frontend**: React 19, TypeScript, TailwindCSS 4
 - **Editor**: Monaco Editor
@@ -29,7 +29,7 @@ A real in-browser IDE powered by WebContainers. Code, build, and run projects di
 - **State Management**: Jotai
 - **Routing**: React Router v7
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -59,7 +59,7 @@ npm run build
 npm run preview
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
@@ -89,7 +89,7 @@ src/
 └── main.tsx                 # App entry point
 ```
 
-## 🎨 Supported Frameworks
+## Supported Frameworks
 
 | Framework | Status | Description |
 |-----------|--------|-------------|
@@ -100,7 +100,7 @@ src/
 | Next.js | 🔜 Coming Soon | Full-stack React framework |
 | Remix | 🔜 Coming Soon | Full stack web framework |
 
-## 🔧 Configuration
+## Configuration
 
 The IDE uses sensible defaults, but you can customize:
 
@@ -108,11 +108,11 @@ The IDE uses sensible defaults, but you can customize:
 - **Editor theme**: Monaco editor settings in `CodeEditor.tsx`
 - **Project templates**: Add new frameworks in `projectFiles.ts`
 
-## 📝 License
+## License
 
 MIT License - feel free to use this project for personal or commercial purposes.
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
