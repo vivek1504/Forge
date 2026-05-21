@@ -2,6 +2,14 @@
 
 A real in-browser IDE powered by WebContainers. Code, build, and run projects directly in your browser with zero setup.
 
+<p align="center">
+  <img
+    src="https://res.cloudinary.com/dj7gqjguy/image/upload/v1779355997/forge-demo_xp6s5r.gif"
+    alt="Forge Demo"
+    width="100%"
+  />
+</p>
+
 ![Forge](https://img.shields.io/badge/Forge-v1.2.0-blue)
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript)
