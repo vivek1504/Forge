@@ -15,48 +15,113 @@ export const reactProjectFiles: FileSystemTree = {
 
       "App.css": {
         file: {
-          contents: `#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+          contents: `:root {
+            color-scheme: dark;
+          }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+          body {
+            margin: 0;
+            display: flex;
+            place-items: center;
+            min-width: 320px;
+            min-height: 100vh;
+            background-color: #0b0b0c;
+            color: #e4e4e7;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+          }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+          #root {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            width: 100%;
+          }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
+          .card {
+            background: #121214;
+            border: 1px solid #222226;
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            max-width: 440px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+          }
 
-.card {
-  padding: 2em;
-}
+          h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            margin: 1.5rem 0 2rem 0;
+            background: linear-gradient(to right, #ffffff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
 
-.read-the-docs {
-  color: #888;
-}`,
+          button {
+            background-color: #ededed;
+            color: #0b0b0c;
+            border: none;
+            padding: 0.8rem 1.6rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+          }
+
+          button:hover {
+            background-color: #ffffff;
+            transform: translateY(-1px);
+          }
+
+          button:active {
+            transform: translateY(1px);
+          }
+
+          .logo {
+            height: 4.5em;
+            padding: 1rem;
+            will-change: filter;
+            transition: filter 400ms cubic-bezier(0.16, 1, 0.3, 1), transform 400ms;
+          }
+
+          .logo:hover {
+            filter: drop-shadow(0 0 2.5rem rgba(100, 108, 255, 0.4));
+            transform: scale(1.05);
+          }
+
+          .logo.react:hover {
+            filter: drop-shadow(0 0 2.5rem rgba(97, 218, 251, 0.4));
+          }
+
+          @keyframes logo-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+          }
+
+          @media (prefers-reduced-motion: no-preference) {
+            a:nth-of-type(2) .logo {
+              animation: logo-spin infinite 30s linear;
+            }
+          }
+
+
+            font-size: 0.85rem;
+            color: #52525b;
+            margin-top: 2rem;
+          }
+
+          code {
+            font-family: 'JetBrains Mono', Fira Code, monospace;
+            background-color: #1a1a1e;
+            color: #f4f4f5;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            border: 1px solid #27272a;
+          }`,
         },
       },
 
