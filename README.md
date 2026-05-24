@@ -6,9 +6,9 @@
 
 **A full IDE in your browser. No install. No server. Just code.**
 
-[**→ Try it live**](https://forge.vivekjadhav.xyz) · [Report a bug](https://github.com/yourusername/forge/issues) · [Request a feature](https://github.com/yourusername/forge/issues)
+[**→ Try it live**](https://forge.vivekjadhav.xyz) · [Report a bug](https://github.com/vivek1504/forge/issues) · [Request a feature](https://github.com/vivek1504/forge/issues)
 
-[![Stars](https://img.shields.io/github/stars/yourusername/forge?style=flat&color=yellow)](https://github.com/yourusername/forge/stargazers)
+[![Stars](https://img.shields.io/github/stars/vivek1504/forge?style=flat&color=yellow)](https://github.com/yourusername/forge/stargazers)
 ![Forge](https://img.shields.io/badge/Forge-v1.2.0-blue)
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript)
