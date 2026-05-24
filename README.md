@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://res.cloudinary.com/dj7gqjguy/image/upload/v1779355997/forge-demo_xp6s5r.gif" alt="Forge Demo" width="100%" />
+<img src="https://res.cloudinary.com/dsvgi3ehk/image/upload/v1779626372/demo-forge_cesb7b.gif" alt="Forge Demo" width="100%" />
 
 # Forge
 
