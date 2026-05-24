@@ -8,7 +8,8 @@
 
 [**→ Try it live**](https://forge.vivekjadhav.xyz) · [Report a bug](https://github.com/vivek1504/forge/issues) · [Request a feature](https://github.com/vivek1504/forge/issues)
 
-[![Stars](https://img.shields.io/github/stars/vivek1504/forge?style=flat&color=yellow)](https://github.com/yourusername/forge/stargazers)
+[![Stars](https://img.shields.io/github/stars/vivek1504/forge?style=flat&color=yellow)](https://github.com/vivek1504/forge/stargazers)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/vivek1504/forge/blob/main/LICENSE)
 ![Forge](https://img.shields.io/badge/Forge-v1.2.0-blue)
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript)
@@ -24,13 +25,17 @@
 
 ## What is this?
 
-Forge runs a real Node.js environment directly in your browser tab using [WebContainers](https://webcontainers.io/). Pick a framework, start coding, and see a live preview — all without touching your terminal or installing anything.
+Forge runs a **real Node.js environment directly in your browser tab** using [WebContainers](https://webcontainers.io/). Pick a framework, start coding, and see a live preview — all without touching your terminal or installing anything.
 
 No Docker. No cloud VM. No backend. It's all client-side.
+
+**Why Forge over StackBlitz or CodeSandbox?** Forge is fully open-source, self-hostable, and has zero vendor lock-in. It's also a clean, minimal reference implementation — no accounts, no paywalls, no telemetry. Just the code, fully readable and forkable.
 
 ## Try it
 
 **[forge.vivekjadhav.xyz](https://forge.vivekjadhav.xyz)**
+
+---
 
 ## Features
 
@@ -39,9 +44,11 @@ No Docker. No cloud VM. No backend. It's all client-side.
 - **Live preview** — HMR-powered preview updates as you type
 - **Monaco editor** — the same editor that powers VS Code
 - **Integrated terminal** — full xterm.js terminal, not a fake console
-- **File explorer** — create, rename, delete files like a real IDE
+- **File explorer** — create, rename, and delete files like a real IDE
 - **Download as zip** — export your project and keep working locally
-- **Runs 100% client-side** — no server, no data sent anywhere
+- **100% client-side** — no server, no accounts, no data sent anywhere
+
+---
 
 ## Supported frameworks
 
@@ -54,22 +61,35 @@ No Docker. No cloud VM. No backend. It's all client-side.
 | Next.js | 🔜 Coming soon |
 | Remix | 🔜 Coming soon |
 
-## How it works
+---
 
-WebContainers is a browser-based runtime from StackBlitz that boots a real Node.js environment using WebAssembly. Forge wraps this with a Monaco editor, an xterm.js terminal, and a live preview iframe to give you a complete IDE experience — entirely in a browser tab.
+## Why it's hard
 
-The hard parts: getting SharedArrayBuffer headers right, managing WebContainer lifecycle, syncing the file system with the editor, and keeping the terminal responsive. The repo shows how all of that fits together.
+WebContainers sound simple — boot Node.js in the browser — but the details are brutal:
+
+- **Cross-Origin Isolation** — WebContainers require `SharedArrayBuffer`, which requires `COOP` and `COEP` headers on every response. Getting this right in dev, prod, and across iframes took real effort.
+- **WebContainer lifecycle** — the container needs to be booted once, kept alive, and torn down cleanly. Mismanage this and you leak memory or get zombie processes.
+- **File system sync** — every edit in Monaco needs to flush to the virtual FS immediately, or the running process sees stale files. Getting this sync fast and reliable without race conditions is subtle.
+- **Terminal responsiveness** — xterm.js and the WebContainer's output streams need to be wired together without dropping bytes or blocking the UI thread.
+
+The source in `src/lib/` shows exactly how each of these is solved.
+
+---
 
 ## Run it locally
 
 ```bash
-git clone https://github.com/yourusername/forge.git
+git clone https://github.com/vivek1504/forge.git
 cd forge
 npm install
 npm run dev
 ```
 
-Open `http://localhost:5173`. Note: WebContainers requires `Cross-Origin-Isolation` headers — the dev server handles this automatically.
+Open `http://localhost:5173`.
+
+> **Note:** WebContainers require `Cross-Origin-Isolation` headers (`COOP` + `COEP`). The dev server sets these automatically via the Vite config.
+
+---
 
 ## Tech stack
 
@@ -85,32 +105,44 @@ Open `http://localhost:5173`. Note: WebContainers requires `Cross-Origin-Isolati
 | Routing | React Router v7 |
 | Animations | Framer Motion |
 
+---
+
 ## Project structure
 
 ```
 src/
 ├── components/
-│   ├── CodeEditor.tsx       # Monaco editor wrapper
-│   ├── Terminal.tsx         # xterm.js terminal
-│   ├── Sidebar.tsx          # File explorer
-│   ├── PreviewFrame.tsx     # Live preview iframe
+│   ├── CodeEditor.tsx        # Monaco editor wrapper
+│   ├── Terminal.tsx          # xterm.js terminal
+│   ├── Sidebar.tsx           # File explorer
+│   ├── PreviewFrame.tsx      # Live preview iframe
 │   ├── IdeHeader.tsx
 │   └── IdeFooter.tsx
 ├── lib/
-│   ├── webContainerRuntime.ts   # WebContainer setup & lifecycle
-│   ├── webContainerManager.ts   # Instance management
-│   ├── projectFiles.ts          # Framework templates
-│   ├── atoms.ts                 # Jotai state
+│   ├── webContainerRuntime.ts    # WebContainer setup & lifecycle
+│   ├── webContainerManager.ts    # Instance management
+│   ├── projectFiles.ts           # Framework templates
+│   ├── atoms.ts                  # Jotai state
 │   └── utils.ts
 └── pages/
     ├── LandingPage.tsx
     └── IDEpage.tsx
 ```
 
+---
+
 ## Contributing
 
-PRs are welcome. If you're adding a new framework template, the relevant file is `src/lib/projectFiles.ts`.
+PRs are welcome — especially for new framework templates and bug fixes.
+
+- **New framework template?** → `src/lib/projectFiles.ts` is where templates live
+- **Bug or feature?** → Check [open issues](https://github.com/vivek1504/forge/issues) first; issues labeled [`good first issue`](https://github.com/vivek1504/forge/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) are a good starting point
+- **Testing:** Run `npm run dev` and verify HMR, terminal, and file explorer work end-to-end in Chrome (WebContainers have best support there)
+
+If you're unsure whether something is worth building, open an issue first and let's talk.
+
+---
 
 ## License
 
-MIT
+MIT — do whatever you want with it.
