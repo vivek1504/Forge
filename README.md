@@ -67,19 +67,6 @@ No Docker. No cloud VM. No backend. It's all client-side.
 
 ---
 
-## Why it's hard
-
-WebContainers sound simple — boot Node.js in the browser — but the details are brutal:
-
-- **Cross-Origin Isolation** — WebContainers require `SharedArrayBuffer`, which requires `COOP` and `COEP` headers on every response. Getting this right in dev, prod, and across iframes took real effort.
-- **WebContainer lifecycle** — the container needs to be booted once, kept alive, and torn down cleanly. Mismanage this and you leak memory or get zombie processes.
-- **File system sync** — every edit in Monaco needs to flush to the virtual FS immediately, or the running process sees stale files. Getting this sync fast and reliable without race conditions is subtle.
-- **Terminal responsiveness** — xterm.js and the WebContainer's output streams need to be wired together without dropping bytes or blocking the UI thread.
-
-The source in `src/lib/` shows exactly how each of these is solved.
-
----
-
 ## Run it locally
 
 ```bash
@@ -140,7 +127,6 @@ src/
 PRs are welcome — especially for new framework templates and bug fixes.
 
 - **New framework template?** → `src/lib/projectFiles.ts` is where templates live
-- **Bug or feature?** → Check [open issues](https://github.com/vivek1504/forge/issues) first; issues labeled [`good first issue`](https://github.com/vivek1504/forge/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) are a good starting point
 - **Testing:** Run `npm run dev` and verify HMR, terminal, and file explorer work end-to-end in Chrome (WebContainers have best support there)
 
 If you're unsure whether something is worth building, open an issue first and let's talk.
