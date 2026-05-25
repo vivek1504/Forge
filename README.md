@@ -12,12 +12,12 @@
 
 [**→ Try it live**](https://forge.vivekjadhav.xyz) · [Report a bug](https://github.com/vivek1504/forge/issues) · [Request a feature](https://github.com/vivek1504/forge/issues)
 
-[![Stars](https://img.shields.io/github/stars/vivek1504/forge?style=flat&color=yellow)](https://github.com/vivek1504/forge/stargazers)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/vivek1504/forge/blob/main/LICENSE)
-![Forge](https://img.shields.io/badge/Forge-v1.2.0-blue)
-![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript)
-![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite)
+<p align="center">
+  <img src="https://img.shields.io/badge/React-19-blue" />
+  <img src="https://img.shields.io/badge/TypeScript-5-blue" />
+  <img src="https://img.shields.io/badge/WebContainers-API-black" />
+  <img src="https://img.shields.io/badge/license-MIT-green" />
+</p>
 
 </div>
 
@@ -29,15 +29,13 @@
 
 ## What is this?
 
-Forge runs a **real Node.js environment directly in your browser tab** using [WebContainers](https://webcontainers.io/). Pick a framework, start coding, and see a live preview — all without touching your terminal or installing anything.
+Forge is a browser-based development environment powered by WebContainers.
 
-No Docker. No cloud VM. No backend. It's all client-side.
+It runs a real Node.js runtime directly inside your browser tab, allowing you to create, edit, install dependencies, and run projects entirely client-side.
 
-**Why Forge over StackBlitz or CodeSandbox?** Forge is fully open-source, self-hostable, and has zero vendor lock-in. It's also a clean, minimal reference implementation — no accounts, no paywalls, no telemetry. Just the code, fully readable and forkable.
+There’s no backend server, remote VM, or Docker container involved.
 
-## Try it
-
-**[forge.vivekjadhav.xyz](https://forge.vivekjadhav.xyz)**
+Pick a framework, start coding instantly, and see live updates with hot reload - all from a single URL.
 
 ---
 
@@ -54,34 +52,19 @@ No Docker. No cloud VM. No backend. It's all client-side.
 
 ---
 
-## Supported frameworks
+## Architecture
 
-| Framework | Status |
-|-----------|--------|
-| React + Vite | ✅ |
-| Vue + Vite | ✅ |
-| Svelte + Vite | ✅ |
-| Node.js | ✅ |
-| Next.js | 🔜 Coming soon |
-| Remix | 🔜 Coming soon |
+Forge runs entirely inside the browser using WebContainers.
 
----
+- Monaco Editor powers the editing experience
+- xterm.js provides the terminal interface
+- WebContainers boot a real Node.js runtime in-browser
+- Vite powers instant HMR and preview updates
+- Jotai manages IDE state and file synchronization
 
-## Run it locally
-
-```bash
-git clone https://github.com/vivek1504/forge.git
-cd forge
-npm install
-npm run dev
-```
-
-Open `http://localhost:5173`.
-
-> **Note:** WebContainers require `Cross-Origin-Isolation` headers (`COOP` + `COEP`). The dev server sets these automatically via the Vite config.
+Everything executes client-side — no server orchestration layer exists.
 
 ---
-
 ## Tech stack
 
 | Layer | Library |
@@ -95,6 +78,19 @@ Open `http://localhost:5173`.
 | State | Jotai |
 | Routing | React Router v7 |
 | Animations | Framer Motion |
+
+---
+
+## Supported frameworks
+
+| Framework | Status |
+|-----------|--------|
+| React + Vite | ✅ |
+| Vue + Vite | ✅ |
+| Svelte + Vite | ✅ |
+| Node.js | ✅ |
+| Next.js | 🔜 Coming soon |
+| Remix | 🔜 Coming soon |
 
 ---
 
@@ -119,6 +115,41 @@ src/
     ├── LandingPage.tsx
     └── IDEpage.tsx
 ```
+---
+
+## Run it locally
+
+```bash
+git clone https://github.com/vivek1504/forge.git
+cd forge
+npm install
+npm run dev
+```
+
+Open `http://localhost:5173`.
+
+> **Note:** WebContainers require `Cross-Origin-Isolation` headers (`COOP` + `COEP`). The dev server sets these automatically via the Vite config.
+
+---
+## Limitations
+
+Because Forge runs entirely in the browser through WebContainers:
+
+- Best supported in Chromium-based browsers
+- Native binaries are not supported
+- Large dependency installs may impact memory usage
+- Some Node.js APIs behave differently from native environments
+
+---
+
+## Roadmap
+
+- [ ] Next.js template
+- [ ] Remix support
+- [ ] Multi-tab editing
+- [ ] Persistent local storage
+- [ ] Git integration
+- [ ] Collaborative editing
 
 ---
 
