@@ -1,6 +1,10 @@
 <div align="center">
 
-<img src="https://res.cloudinary.com/dsvgi3ehk/image/upload/v1779626372/demo-forge_cesb7b.gif" alt="Forge Demo" width="100%" />
+<p align="center">
+  <a href="https://github.com/user-attachments/assets/3fdeb5ad-e832-4bbf-a879-bb22c35d0ea0">
+    <img src="./src/assets/demo.webp" width="900" alt="Forge Demo">
+  </a>
+</p>
 
 # Forge
 
