@@ -1,13 +1,11 @@
 ::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
-/* Firefox */
 html {
-  scrollbar-width: none;
+    scrollbar-width: none;
 }
 
-/* IE / old Edge */
 body {
-  -ms-overflow-style: none;
+    -ms-overflow-style: none;
 }
